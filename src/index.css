@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.orange{
+    color:#ff5200;
+    background: #ff5200;
+    height: 4px;
+    margin: auto;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}

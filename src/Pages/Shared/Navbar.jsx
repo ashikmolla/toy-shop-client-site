@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.jpg'
 
 
 
@@ -12,11 +13,12 @@ const navItems = <>
     <li><Link to='/'>All Toy</Link></li>
     <li><Link to='/'>Contacts</Link></li>
     <li><Link to='/'>Login</Link></li>
+    {/* <li><Link to='/'>Login</Link></li> */}
     <li>
         <details>
             <summary>Parent</summary>
             <ul className="p-2 ">
-                <li className='w-full'><a>Submenu 1</a></li>
+                <li><a>Submenubanglade1</a></li>
                 <li><a>Submenu 2</a></li>
             </ul>
         </details>
@@ -25,25 +27,35 @@ const navItems = <>
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-500">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                       {navItems}
+                        {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+
+
+                <div className="grid lg:grid-cols-2  items-center ms-10">
+                    <Link to="/" className="mt-3 w-16  m-auto">
+                        <img src={logo} alt="" />
+                    </Link>
+                    <h1 className=" font-bold text-xl cursor-pointer mx-auto">
+                        <spen className='text-2xl text-orange-500 font-serif'>T</spen>oy <spen className='text-zinc-600'>S</spen>hop</h1>
+                    {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
+                </div>
+
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 text-xl">
                     {navItems}
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <div className='mx-auto'><a className="btn mx">Button</a></div>
             </div>
         </div>
     );
