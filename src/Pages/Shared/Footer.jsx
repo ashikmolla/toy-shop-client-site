@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-neutral text-neutral-content">
+        <footer className="footer w-full p-10 bg-neutral text-neutral-content">
             <div>
                 <img className='w-24 rounded-full' src={logo} alt="" />
                 <p>ASHIK Bangladesh Ltd.<br />Providing reliable tech since 2023/5/20</p>

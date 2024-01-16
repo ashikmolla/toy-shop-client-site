@@ -4,7 +4,7 @@ import OurService from './OurService';
 
 const Home = () => {
     return (
-        <div className=''>
+        <div className='p-0 w-full'>
             <Banner></Banner>
             <OurService></OurService>
         </div>
