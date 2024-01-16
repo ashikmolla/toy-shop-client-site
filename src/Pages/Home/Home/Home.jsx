@@ -4,7 +4,7 @@ import OurService from './OurService';
 
 const Home = () => {
     return (
-        <div className='border'>
+        <div className=''>
             <Banner></Banner>
             <OurService></OurService>
         </div>
