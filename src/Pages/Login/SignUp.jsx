@@ -3,12 +3,21 @@ import img from '../../assets/login/sign_up.svg';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
-const SignUp = () => {
-    const [pshow, setPshow] = useState(false)
-    const [cshow, setCshow] = useState(false)
-    const hanleRegistration = event => {
 
+const SignUp = () => {
+  
+    const hanleRegistration = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photoUrl = form.photoUrl.value;
+        const password = form.password.value;
+        const cPassword = form.cPassword.value;
+
+       
     }
+
     return (
         <div className="hero min-h-screen bg-base-200 py-4">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -42,7 +51,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Photo Url</span>
                             </label>
-                            <input type="text" name='photo' placeholder="Photo Url" className="input input-bordered" required />
+                            <input type="text" name='photoUrl' placeholder="Photo Url" className="input input-bordered" required />
                         </div>
                         {/* passwer fild */}
                         <div className="form-control">
@@ -61,7 +70,7 @@ const SignUp = () => {
                         {/* conprom password  */}
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text ">Password</span>
+                                <span className="label-text ">confiram password</span>
                                 <p onClick={() => setCshow(!cshow)} className='absolute cursor-pointer end-10'>
                                     {
                                         cshow ? <EyeIcon className="w-8" />
@@ -70,10 +79,10 @@ const SignUp = () => {
 
                                 </p>
                             </label>
-                            <input type={cshow ? 'text' : 'password'} name='password' placeholder="password" className="input input-bordered" required />
+                            <input type={cshow ? 'text' : 'password'} name='cPassword' placeholder="Confiram password" className="input input-bordered" required />
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-[#ff5200] hover:bg-[#dd5314] text-white text-2xl shadow-lg hover:shadow-sm transition-all">Login</button>
+                            <button className="btn bg-[#ff5200] hover:bg-[#dd5314] text-white text-2xl shadow-lg hover:shadow-sm transition-all">Registion</button>
                             <p className='mx-auto my-4'>Alrady Have An Account ? <Link className='text-sky-700' to='/Login'>Login</Link></p>
                         </div>
 
