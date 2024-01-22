@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import img from '../../assets/login/login.svg';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProviders';
 
 const Login = () => {
     const [show, setShow] = useState(false)
-
+    const {user}=useContext(AuthContext);
+    console.log(user)
+    
     const hanleLogin = event => {
         event.preventDefault();
         const form = event.target;
