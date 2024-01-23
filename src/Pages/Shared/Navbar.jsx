@@ -19,12 +19,16 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>All Toy</Link></li>
         <li><Link to='/'>Contacts</Link></li>
-        <li>{
+
+{
+        user && <li><Link to='myOrder'>MyOrder</Link></li>
+        
+}        <li>{
             user ?
-                <Link onClick={handleLogOut} to='login'>Log Out</Link>
+            <Link onClick={handleLogOut} to='login'>Log Out</Link>
                 :
                 <Link to='login'>Login</Link>
-        }
+            }
         </li>
         
         <li>
@@ -36,10 +40,7 @@ const Navbar = () => {
                 </ul>
             </details>
         </li>
-        <li className='items-center text-green-500'>
-            {user && user.email}
-
-        </li>
+            <li><Link to='/'>{user && user.email}</Link></li>
     </>
     return (
         <div className="navbar bg-base-500">

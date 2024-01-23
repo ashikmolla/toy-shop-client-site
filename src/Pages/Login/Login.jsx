@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import img from '../../assets/login/login.svg';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProviders';
 import Swal from 'sweetalert2'
 import SocialLogin from '../Shared/SocialLogin';
@@ -9,7 +9,10 @@ import SocialLogin from '../Shared/SocialLogin';
 const Login = () => {
     const { user, signIn } = useContext(AuthContext);
     const [show, setShow] = useState(false)
-    const [error, setError] = useState([])
+    const [error, setError] = useState([]);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const hanleLogin = event => {
         event.preventDefault();
@@ -21,6 +24,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 // console.log(user);
+                navigate(from, { replace: true });
                 Swal.fire({
                     icon: "success",
                     title: "Toy-Shop Login successfull",
