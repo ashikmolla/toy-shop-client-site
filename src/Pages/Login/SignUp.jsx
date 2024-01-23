@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import img from '../../assets/login/sign_up.svg';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProviders';
 
 
 const SignUp = () => {
-  
+    const [pshow, setPshow] = useState(false)
+    const [cshow, setCshow] = useState(false)
+    const { creatUser } = useContext(AuthContext)
+    const navigate = useNavigate()
     const hanleRegistration = event => {
         event.preventDefault();
         const form = event.target;
@@ -14,8 +18,19 @@ const SignUp = () => {
         const photoUrl = form.photoUrl.value;
         const password = form.password.value;
         const cPassword = form.cPassword.value;
+        console.log(name, email, photoUrl, password, cPassword)
 
-       
+
+        creatUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+
     }
 
     return (

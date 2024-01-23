@@ -3,18 +3,34 @@ import img from '../../assets/login/login.svg';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProviders';
+import Swal from 'sweetalert2'
+import SocialLogin from '../Shared/SocialLogin';
 
 const Login = () => {
+    const { user, signIn } = useContext(AuthContext);
     const [show, setShow] = useState(false)
-    const {user}=useContext(AuthContext);
-    console.log(user)
-    
+    const [error, setError] = useState([])
+
     const hanleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        // console.log(email, password)
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                // console.log(user);
+                Swal.fire({
+                    icon: "success",
+                    title: "Toy-Shop Login successfull",
+                    text: "You have Have a Account then by product",
+                });
+            })
+            .catch((result) => {
+                const errors = result.message;
+                setError(errors)
+            });
 
     }
     return (
@@ -55,8 +71,12 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
+                            <p className='text-orange-700 text-center text-sm mb-4'>{error}</p>
                             <button className="btn bg-[#ff5200] hover:bg-[#dd5314] text-white text-2xl shadow-lg hover:shadow-sm transition-all">Login</button>
                             <p className='mx-auto my-4'>Dont’t Have An Account ? <Link className='text-sky-700' to='/signUp'>Sign Up</Link></p>
+                        </div>
+                        <div className='form-control'>
+                            <SocialLogin></SocialLogin>
                         </div>
 
                     </form>

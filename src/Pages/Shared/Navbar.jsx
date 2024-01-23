@@ -1,31 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.jpg'
+import { AuthContext } from '../../Provider/AuthProviders';
+import { UserIcon } from '@heroicons/react/24/solid'
 
 
 
-
-
-
-const navItems = <>
-
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/'>All Toy</Link></li>
-    <li><Link to='/'>Contacts</Link></li>
-    <li><Link to='login'>Login</Link></li>
-    {/* <li><Link to='/'>Login</Link></li> */}
-    <li>
-        <details>
-            <summary>Parent</summary>
-            <ul className="p-2 ">
-                <li><a>Submenubanglade1</a></li>
-                <li><a>Submenu 2</a></li>
-            </ul>
-        </details>
-    </li>
-</>
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    // console.log(user?.email);
+    const handleLogOut=()=>{
+        logOut()
+        .then(()=>{ })
+        .catch(error=>console.log(error))
+    }
+    const navItems = <>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/'>All Toy</Link></li>
+        <li><Link to='/'>Contacts</Link></li>
+        <li>{
+            user ?
+                <Link onClick={handleLogOut} to='login'>Log Out</Link>
+                :
+                <Link to='login'>Login</Link>
+        }
+        </li>
+        
+        <li>
+            <details>
+                <summary>Parent</summary>
+                <ul className="p-2 ">
+                    <li><a>Submenubanglade1</a></li>
+                    <li><a>Submenu 2</a></li>
+                </ul>
+            </details>
+        </li>
+        <li className='items-center text-green-500'>
+            {user && user.email}
+
+        </li>
+    </>
     return (
         <div className="navbar bg-base-500">
             <div className="navbar-start">
@@ -55,7 +70,24 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className='mx-auto'><a className="btn mx">Button</a></div>
+                
+                <div className='mx-auto'>
+                {
+                    user ?
+                        <div className="tooltip" data-tip={user.displayName}>
+                            {/* <button className="btn btn-circle btn-outline"> */}
+                            <img className=' w-10 rounded-full' src={user.photoURL} alt="" />
+                            {/* </button> */}
+
+                        </div>
+                        : <div className="tooltip" data-tip='Your Name'>
+                            <button className='btn  btn-circle' >
+                                <UserIcon className="h-8 w-8 text-white" />
+                            </button>
+                        </div>
+                }
+                </div>
+           
             </div>
         </div>
     );
