@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import ProdactCataegory from './ProdactCataegory';
 import ProductsCart from './ProductsCart';
 
 const Products = () => {
     const [products, setProducts]=useState([]);
    useEffect(()=>{
-    fetch('products.json')
+    fetch('http://localhost:5000/products')
     .then(res=> res.json())
     .then(data=>setProducts(data))
    },[])
-//    console.log(products)
+   console.log(products)
     return (
         <div className=''>
             <div className='text-center mt-10 mx-auto'>
@@ -23,7 +22,7 @@ const Products = () => {
                 
                 {
                     products.map(product=><ProductsCart
-                    key={product.id}
+                    key={product._id}
                     product={product}
                     ></ProductsCart>)
 

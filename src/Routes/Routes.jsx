@@ -6,6 +6,7 @@ import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/Login/SignUp';
 import PrivatRouter from './PrivatRouter';
 import MyOrder from '../Pages/MyOrder/MyOrder';
+import Order from '../Pages/MyOrder/Order';
 
 const Routes =  createBrowserRouter([
     {
@@ -24,7 +25,12 @@ const Routes =  createBrowserRouter([
         },
         {
           path:'myOrder',
-          element:<PrivatRouter><MyOrder/></PrivatRouter>
+          element:<PrivatRouter><MyOrder/></PrivatRouter>,
+        },
+        {
+          path:'order',
+          element:<PrivatRouter><Order/></PrivatRouter>,
+          loader:({params})=>fetch(`products.json/${params.id}`)
         }
       ]
     },

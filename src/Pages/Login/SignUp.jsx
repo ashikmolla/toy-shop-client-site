@@ -8,7 +8,7 @@ import { AuthContext } from '../../Provider/AuthProviders';
 const SignUp = () => {
     const [pshow, setPshow] = useState(false)
     const [cshow, setCshow] = useState(false)
-    const { creatUser } = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const hanleRegistration = event => {
         event.preventDefault();
@@ -21,7 +21,7 @@ const SignUp = () => {
         console.log(name, email, photoUrl, password, cPassword)
 
 
-        creatUser(email, password)
+        createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
