@@ -8,7 +8,7 @@ const Products = () => {
     .then(res=> res.json())
     .then(data=>setProducts(data))
    },[])
-   console.log(products)
+//    console.log(products)
     return (
         <div className=''>
             <div className='text-center mt-10 mx-auto'>

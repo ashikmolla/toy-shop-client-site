@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ProductsCart = ({product}) => {
     // console.log(product)
-    const {title, name, img, price, rating}=product;
+    const {_id, title, name, img, price, rating}=product;
     const modulas = 10;
     const offer=price / 100 * modulas;
     const offerPrice=price - offer;
@@ -19,7 +19,8 @@ const ProductsCart = ({product}) => {
                         <p className='text-xl'>Pricr:-<spen className="text-orange-500 mx-1 font-sans"> {offerPrice}</spen><span className='line-through text-lg font-sans'>{price}({modulas}%)</span></p>
                         <p className='text-xl'>Rating:-<spen className="text-orange-500 font-sans">{rating}</spen></p>
                     </div>
-                    <Link className='w-full absolute bottom-0' to={'/'}>
+                    {/* <Link className='w-full absolute bottom-0' to={`/singleProductDetails/${_id}`}> */}
+                    <Link className='w-full absolute bottom-0' to={`/checkout/${_id}`}>
                         <button className="btn bg-[#ff5300] hover:bg-[#ff8d57] text-white w-full rounded-tl-none rounded-tr-none">Vew Details
 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

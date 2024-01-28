@@ -10,6 +10,7 @@ const Login = () => {
     const { user, signIn } = useContext(AuthContext);
     const [show, setShow] = useState(false)
     const [error, setError] = useState([]);
+    // location track in login mathed 
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';

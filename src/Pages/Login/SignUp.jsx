@@ -1,15 +1,20 @@
 import React, { useContext, useState } from 'react';
 import img from '../../assets/login/sign_up.svg';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProviders';
+import Swal from 'sweetalert2'
 
 
 const SignUp = () => {
     const [pshow, setPshow] = useState(false)
     const [cshow, setCshow] = useState(false)
-    const { createUser } = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext);
+    // location track in singup mathed
+    const location = useLocation()
     const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
+
     const hanleRegistration = event => {
         event.preventDefault();
         const form = event.target;
@@ -18,13 +23,19 @@ const SignUp = () => {
         const photoUrl = form.photoUrl.value;
         const password = form.password.value;
         const cPassword = form.cPassword.value;
-        console.log(name, email, photoUrl, password, cPassword)
+        // console.log(name, email, photoUrl, password, cPassword)
 
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user);
+                navigate(from, { replace: true });
+                Swal.fire({
+                    icon: "success",
+                    title: "Toy-Shop Sing Up successfull",
+                    text: "You have Have a Account then by product",
+                });
             })
             .catch(error => {
                 console.log(error)
