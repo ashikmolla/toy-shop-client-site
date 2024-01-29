@@ -16,6 +16,38 @@ const Checkout = () => {
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     let currentDate = `${day}-${month}-${year}`;
+
+
+/// receive date callete now
+    let calDay = ' ';
+    let calMonth = ' '
+    if (day >= 30) {
+        day = 0;
+        calDay = day + 4;
+        calMonth = month + 1;
+    } else if (day >= 29) {
+        day = 0;
+        calDay = day + 3;
+        calMonth = month + 1;
+
+    } else if (day >= 28) {
+        day = 0;
+        calDay = day + 2;
+        calMonth = month + 1;
+
+    } else if (day >= 27) {
+        day = 0;
+        calDay = day + 1;
+        calMonth = month + 1;
+
+    } else {
+        calDay = day + 3;
+    }
+  
+
+
+    const receiveDate = `${calDay}-${calMonth}-${year}`;
+    
     // console.log(currentDate); 
 
     const productName = name;
@@ -42,7 +74,8 @@ const Checkout = () => {
             img,
             productName,
             price: totalPrice,
-            currentDate
+            currentDate,
+            receiveDate
         }
         console.log(order)
         fetch('http://localhost:5000/orderProduct', {
@@ -59,7 +92,7 @@ const Checkout = () => {
 
 
     }
-   
+
     return (
         <div className='' >
             <div className='bg-base-200 pt-16pb-6 rounded' >
@@ -99,7 +132,7 @@ const Checkout = () => {
                                     <label className="label">
                                         <span className="label-text">Phone</span>
                                     </label>
-                                    <input type="number" name='phone' defaultValue='018' className="input input-bordered font-sans"  />
+                                    <input type="number" name='phone' defaultValue='018' className="input input-bordered font-sans" />
 
                                 </div>
                                 <div className="form-control">
@@ -129,7 +162,7 @@ const Checkout = () => {
                                         <p className='label-text'>Price- <span className='font-sans'> {price}</span></p>
                                     </label>
                                     {/* <input name='price' value={user?.price} placeholder={price} className="input input-bordered" /> */}
-                                    
+
 
                                 </div>
 

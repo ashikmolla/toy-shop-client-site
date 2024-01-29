@@ -31,7 +31,7 @@ const Navbar = () => {
             }
         </li>
         
-        <li>
+        {/* <li>
             <details>
                 <summary>Parent</summary>
                 <ul className="p-2 ">
@@ -39,7 +39,7 @@ const Navbar = () => {
                     <li><a>Submenu 2</a></li>
                 </ul>
             </details>
-        </li>
+        </li> */}
             <li><Link to='/'>{user && user.email}</Link></li>
     </>
     return (
