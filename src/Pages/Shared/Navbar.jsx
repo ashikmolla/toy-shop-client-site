@@ -19,6 +19,7 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>All Toy</Link></li>
         <li><Link to='/'>Contacts</Link></li>
+        <li><Link to='/chatGpt'>chatGpt</Link></li>
 
 {
         user && <li><Link to='order'>MyOrder</Link></li>

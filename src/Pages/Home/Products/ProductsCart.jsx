@@ -10,6 +10,7 @@ const ProductsCart = ({ product }) => {
     const offerPrice = price - offer;
     return (
         <div className="card border border-b-0  hover:shadow-lg relative">
+        
             <figure className='p-3 my-3 cursor-pointer'><img src={img} alt="car!" /></figure>
             <div className=''>
                 <div className="card-actions ">

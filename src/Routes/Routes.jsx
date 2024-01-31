@@ -9,6 +9,7 @@ import SingleProductDetails from '../Pages/Home/Products/singleProductDetails';
 import Checkout from '../Pages/Home/Products/Checkout';
 import Order from '../Pages/MyOrder/Order';
 import Details from '../Pages/MyOrder/Details';
+import ChatGpt from '../Pages/ChatGPT/ChatGpt';
 
 const Routes = createBrowserRouter([
   {
@@ -36,10 +37,14 @@ const Routes = createBrowserRouter([
         path: 'details/:id',
         element: <PrivatRouter><Details /></PrivatRouter>,
         loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
-      },
-      {
+       
+
+      },{
         path: 'order',
         element: <PrivatRouter><Order /></PrivatRouter>
+      }, {
+        path: 'chatGpt',
+        element: <ChatGpt />
       }
     ]
   },
